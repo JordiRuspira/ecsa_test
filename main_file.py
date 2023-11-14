@@ -21,8 +21,7 @@ import matplotlib.dates as md
 import matplotlib.ticker as ticker
 import numpy as np
 import plotly.express as px 
-import streamlit_wordcloud as wordcloud
-
+from wordcloud import WordCloud
 
 st.cache(suppress_st_warning=True)  
 st.set_page_config(page_title="ECSA BI Dashboard", layout="wide",initial_sidebar_state="collapsed")
@@ -72,7 +71,7 @@ with tab1:
     all_interests_text = ', '.join(df_initial_data['Interests'].dropna())
 
     # Generate the word cloud
-    wordcloud = wordcloud(width=800, height=400, background_color='white').generate(all_interests_text)
+    wordcloud = WordCloud(width=800, height=400, background_color='white').generate(all_interests_text)
 
     # Plot the word cloud and display it using st.image
     plt.figure(figsize=(10, 5))

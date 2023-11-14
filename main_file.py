@@ -20,8 +20,8 @@ import matplotlib.pyplot as plt
 import matplotlib.dates as md
 import matplotlib.ticker as ticker
 import numpy as np
-import plotly.express as px
-from wordcloud import WordCloud
+import plotly.express as px 
+import streamlit_wordcloud as wordcloud
 
 
 st.cache(suppress_st_warning=True)  
@@ -72,7 +72,7 @@ with tab1:
     all_interests_text = ', '.join(df_initial_data['Interests'].dropna())
 
     # Generate the word cloud
-    wordcloud = WordCloud(width=800, height=400, background_color='white').generate(all_interests_text)
+    wordcloud = wordcloud(width=800, height=400, background_color='white').generate(all_interests_text)
 
     # Plot the word cloud and display it using st.image
     plt.figure(figsize=(10, 5))

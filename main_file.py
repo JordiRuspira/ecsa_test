@@ -56,35 +56,6 @@ with tab1:
     fig = px.pie(df_initial_data, values='Q4_weekly_hours', names='Node Affiliation', title='Q4 Projected weekly hours by node affiliation')
     st.plotly_chart(fig, theme="streamlit", use_container_width=True)
 
-    # Split the interests in the 'Interests' column
-    interests_split = df_initial_data['Interests'].str.split(', ')
-
-    # Create a list to store individual interests
-    all_interests = [interest for sublist in interests_split.dropna() for interest in sublist]
-
-    # Count the occurrences of each interest
-    interest_counts = pd.Series(all_interests).value_counts()
-
-    # Create a DataFrame from the counts
-    df_interest_counts = pd.DataFrame({'Interest': interest_counts.index, 'Count': interest_counts.values})
-
-    all_interests_text = ', '.join(df_initial_data['Interests'].dropna())
-
-    # Generate the word cloud
-    wordcloud = WordCloud(width=800, height=400, background_color='white').generate(all_interests_text)
-
-    # Plot the word cloud and display it using st.image
-    plt.figure(figsize=(10, 5))
-    plt.imshow(wordcloud, interpolation='bilinear')
-    plt.axis('off')
-    plt.title('Word Cloud of Interests')
-
-    # Save the word cloud image to a BytesIO object
-    image_streamlit = st.image(wordcloud.to_image(), caption='Word Cloud of Interests', use_container_width=True)
-
-    # Display the word cloud in the Streamlit app
-    st.pyplot(plt)
-
     
 with tab2:
     

@@ -55,6 +55,8 @@ with tab1:
     fig = px.pie(df_initial_data, values='Q4_weekly_hours', names='Node Affiliation', title='Q4 Projected weekly hours by node affiliation')
     st.plotly_chart(fig, theme="streamlit", use_container_width=True)
 
+
+    st.image("img/wordcloud_ecsa.png", width=300)
     
 with tab2:
     

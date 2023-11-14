@@ -6,3 +6,4 @@ shroomdk
 seaborn
 plotly
 wordcloud
+streamlit_wordcloud

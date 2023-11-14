@@ -21,7 +21,6 @@ import matplotlib.dates as md
 import matplotlib.ticker as ticker
 import numpy as np
 import plotly.express as px 
-from wordcloud import WordCloud
 
 st.cache(suppress_st_warning=True)  
 st.set_page_config(page_title="ECSA BI Dashboard", layout="wide",initial_sidebar_state="collapsed")

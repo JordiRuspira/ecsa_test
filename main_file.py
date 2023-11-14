@@ -56,7 +56,7 @@ with tab1:
     st.plotly_chart(fig, theme="streamlit", use_container_width=True)
 
 
-    st.image("img/wordcloud_ecsa.png", width=300)
+    st.image("img/wordcloud_ecsa.png")
     
 with tab2:
     

@@ -4,4 +4,5 @@ streamlit
 watchdog
 shroomdk
 seaborn
+wordcloud
 plotly

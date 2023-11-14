@@ -21,6 +21,8 @@ import matplotlib.dates as md
 import matplotlib.ticker as ticker
 import numpy as np
 import plotly.express as px
+from wordcloud import WordCloud
+
 
 st.cache(suppress_st_warning=True)  
 st.set_page_config(page_title="ECSA BI Dashboard", layout="wide",initial_sidebar_state="collapsed")
@@ -67,18 +69,22 @@ with tab1:
     # Create a DataFrame from the counts
     df_interest_counts = pd.DataFrame({'Interest': interest_counts.index, 'Count': interest_counts.values})
 
-    # Plot a bubble chart using plotly
-    fig = px.scatter(df_interest_counts, x='Interest', y='Count', size='Count', title='Bubble Chart of Interests')
+    all_interests_text = ', '.join(df_initial_data['Interests'].dropna())
 
-    fig.update_layout(
-      xaxis_title="Interest",
-      yaxis_title="Count",
-      xaxis_tickangle=-45,
-      showlegend=False
-    )
+    # Generate the word cloud
+    wordcloud = WordCloud(width=800, height=400, background_color='white').generate(all_interests_text)
 
-    # Show the plot using the 'st' (assuming it's Streamlit) plotly_chart function
-    st.plotly_chart(fig, theme="streamlit", use_container_width=True)
+    # Plot the word cloud and display it using st.image
+    plt.figure(figsize=(10, 5))
+    plt.imshow(wordcloud, interpolation='bilinear')
+    plt.axis('off')
+    plt.title('Word Cloud of Interests')
+
+    # Save the word cloud image to a BytesIO object
+    image_streamlit = st.image(wordcloud.to_image(), caption='Word Cloud of Interests', use_container_width=True)
+
+    # Display the word cloud in the Streamlit app
+    st.pyplot(plt)
 
     
 with tab2:

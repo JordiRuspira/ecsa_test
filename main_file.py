@@ -3,7 +3,6 @@
 import hmac
 import streamlit as st
 
-
 def check_password():
     """Returns `True` if the user had the correct password."""
 
@@ -15,7 +14,7 @@ def check_password():
         else:
             st.session_state["password_correct"] = False
 
-    # Return True if the passward is validated.
+    # Return True if the password is validated.
     if st.session_state.get("password_correct", False):
         return True
 
@@ -27,7 +26,7 @@ def check_password():
         st.error("😕 Password incorrect")
     return False
 
-
+# Call the check_password function
 if not check_password():
     st.stop()  # Do not continue if check_password is not True.
 
@@ -53,6 +52,8 @@ import plotly.express as px
 
 st.cache(suppress_st_warning=True)  
 st.set_page_config(page_title="ECSA BI Dashboard", layout="wide",initial_sidebar_state="collapsed")
+
+# Rest of the script...
 
 # In[2]:
 st.title('Introduction')

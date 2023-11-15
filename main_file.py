@@ -94,3 +94,24 @@ with tab2:
     st.subheader('Test2')
     st.write('')
     st.write('Test2 text')
+
+    st.sidebar.header("Add New Entry")
+    name = st.sidebar.text_input("Enter Name:")
+    hours = st.sidebar.number_input("Enter Number of Hours:", min_value=0, step=0.5)
+
+    # Button to add new entry
+    if st.sidebar.button("Add Entry"):
+        # Create a new DataFrame with the new entry
+        new_entry = pd.DataFrame({'name': [name], 'hours': [hours]})
+    
+        # Concatenate the new entry DataFrame with the initial data DataFrame
+        df_updated = pd.concat([df_initial_data, new_entry], ignore_index=True)
+
+        # Display the updated DataFrame
+        st.write("Updated Data:")
+        st.write(df_updated)
+
+        # Save the updated DataFrame to a new CSV file
+        df_updated.to_csv('updated_data.csv', index=False)
+        st.success("Entry added and data updated!")
+

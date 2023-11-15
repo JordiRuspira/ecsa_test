@@ -97,7 +97,7 @@ with tab2:
 
     st.sidebar.header("Add New Entry")
     name = st.sidebar.text_input("Enter Name:")
-    hours = st.sidebar.number_input("Enter Number of Hours:", min_value=0, step=0.5)
+    hours = st.sidebar.number_input("Enter Number of Hours:", min_value=0.0, step=0.5)
 
     # Button to add new entry
     if st.sidebar.button("Add Entry"):

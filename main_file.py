@@ -3,7 +3,6 @@
 import hmac
 import streamlit as st
 
-@st.cache(suppress_st_warning=True, hash_funcs={})
 def check_password():
     """Returns `True` if the user had the correct password."""
 
@@ -68,7 +67,7 @@ st.write('- Deadlines met for tasks within offers.')
 st.write('- Weekly hour limit reached but not breached.')
  
 
-tab1, tab2 = st.tabs(["Section 1 - Number of offers","Section 2 - Input data"])
+tab1, tab2 = st.tabs(["Section 1 - Number of offers","Section 2 "])
 
 # In[7]:
 
@@ -95,25 +94,4 @@ with tab2:
     st.subheader('Test2')
     st.write('')
     st.write('Test2 text')
-
-    if st.button("Add Entry") and check_password():
-        # User input for new data
-        st.header("Add New Entry")
-        name = st.text_input("Enter Name:")
-        hours = st.number_input("Enter Number of Hours:", min_value=0.0, step=0.5)
-
-        # Create a new DataFrame with the new entry
-        new_entry = pd.DataFrame({'name': [name], 'hours': [hours]})
-
-        # Concatenate the new entry DataFrame with the initial data DataFrame
-        df_updated = pd.concat([df_initial_data, new_entry], ignore_index=True)
-
-        # Display the updated DataFrame
-        st.write("Updated Data:")
-        st.write(df_updated)
-
-        # Save the updated DataFrame to a new CSV file
-        df_updated.to_csv('updated_data.csv', index=False)
-        st.success("Entry added and data updated!")
-
 

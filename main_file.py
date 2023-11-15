@@ -3,7 +3,7 @@
 import hmac
 import streamlit as st
 
-@st.cache(suppress_st_warning=True)
+@st.cache(suppress_st_warning=True, hash_funcs={})
 def check_password():
     """Returns `True` if the user had the correct password."""
 
